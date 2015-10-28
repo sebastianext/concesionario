@@ -2,7 +2,7 @@
 class Modelo{
 	protected $conexion;
 	private $host="localhost";
-	private $dbname="busqueda";
+	private $dbname="concesionario";
 	private $username="root";
 	private $password="";
 

@@ -17,7 +17,7 @@
           <link rel="stylesheet" href="css/normalize.css">
           <link rel="stylesheet" href="css/main.css">
           <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="css/style.css">
       <link href="css/materialize.min.css" rel="stylesheet">
           <!-- Place favicon.ico in the root directory -->
@@ -51,60 +51,54 @@
 
     $(document).on('ready',function(){ 
       $(".menu1").on('click',function(){
-        console.log("entro por cacas");
-        $('div.hola').load('../concesionario/vistas/c.php');
+      
+          $('section.hola').load('../concesionario/vistas/Catalogo.php');
+          $('.side-nav').css({'width':'240px','left':'0'});
+      
+       //$('section.hola').load('../concesionario/vistas/Catalogo.php');
       });
 
 
+       $("a.carro").on('click',function(){
+      console.log("sdnsdn");
+          $('section.hola').load('../concesionario/vistas/Carro.php');
+      
+       //$('section.hola').load('../concesionario/vistas/Catalogo.php');
+      });
 
 
-
- $('.button-collapse').sideNav({
-      menuWidth: 240, // Default is 240
-      edge: 'left', // Choose the horizontal origin
-      closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    }
-  );
+       $('.button-collapse').sideNav({
+            menuWidth: 240, // Default is 240
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+          }
+        );
 
 
     });
 
 
- 
-
-   
   </script>
   <body>
-<nav>
+    <nav class="blue">
       <ul id="slide-out" class="side-nav fixed">
-    <li><a href="#!">First Sidebar Link</a></li>
-    <li><a href="#!">Second Sidebar Link</a></li>
-  </ul>
-  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-</nav>
-  <div class="hola">
+        <li><a class="menu1" onclick="return false;">Catalogo de Carros</a></li>
+        <li><a href="#!">Solicitud de Rentas</a></li>
+        <li><a href="#!">Devoluciones</a></li>
+        <li><a href="#!">Retribucion de Bonos</a></li>
+        <li><a href="#!">Facturacion</a></li>
+        <li><a href="#!">Reportes</a></li>
+      </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </nav>
+  <section class="hola">
+    <div >
+     <h1 class="titulo center-align">Concesionario</h1>
+    </div>
 
-
-  </div>
-
-
-  <section>
   </section>
 
-  <div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Card Title</span>
-              <p>I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-            </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
-            </div>
-          </div>
-        </div>
-      </div>
+
+ 
   </body>
 </html>
