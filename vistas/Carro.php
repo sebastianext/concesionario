@@ -32,7 +32,35 @@
                               console.log("dentro del if  success"+respuestaPHP[1]);
                               Materialize.toast(respuestaPHP['resultado'], 5000);
                             }else{
-                              onsole.log("dentro del else success");    
+                              console.log("dentro del else success");    
+                            } 
+                        }
+      });
+    }else{
+      console.log("afuera");
+    }  
+  }
+
+  function eliminar(accion){
+       var placa=$(".input-placa").val(); 
+
+       console.log("color"+ color);
+
+        if(true){
+      $.ajax({
+              url: '/concesionario/CarroController/'+accion,
+              type: 'POST',
+              data: { 
+              'name-input-placa': placa
+              },
+              dataType: 'json',
+              success: function(respuestaPHP){
+                            console.log("dentro del success");
+                            if (respuestaPHP['resultado'] != null ) {
+                              console.log("dentro del if  success"+respuestaPHP[1]);
+                              Materialize.toast(respuestaPHP['resultado'], 5000);
+                            }else{
+                              console.log("dentro del else success");    
                             } 
                         }
       });
@@ -134,6 +162,29 @@
             <div class="row">
                <a class="waves-effect blue btn" onclick="guardar('registrar')">Crear</a>
                <a class="waves-effect blue btn">Actualizar</a>
+               <a class="waves-effect blue btn" onclick="eliminar('eliminar')">Eliminar</a>
             </div>
       </div>
 </div>
+<div class="row">
+      <div class="col s12 m7">
+        <div class="card">
+          <form class="col s12">
+            <div class="row">
+              <span class="card-title black-text">Eliminar carro </span>
+              <div class="card-action">
+            </div>
+             
+            
+              <div class="input-field col s6">
+                <input id="icon_prefix" type="text" class="validate input-hu1" name="name-hu1">
+                <label for="icon_prefix">Placa</label>
+              </div>
+               <div class="input-field col s6">
+                  <a class="waves-effect waves-light btn" onclick="eliminar('eliminar')">Eliminar</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>

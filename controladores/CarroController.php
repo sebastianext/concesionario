@@ -24,33 +24,15 @@ class CarroController extends Controlador {
 			}			
 	}
 
-	public function hu2(){
-		$titulo= $_POST["name-titulo"];
-		$autor= $_POST["name-autor"];
-		$editorial= $_POST["name-editorial"];
-		$pais= $_POST["name-pais"];
-
-		$modelo=$this->cargarModelo("Libro");
-		$respuesta=$modelo->getLibros($titulo,$autor,$editorial,$pais);
-		$html= "<thead>
-					<tr>
-						<th>Titulo</th>
-						<th>Editorial</th>
-						<th>Autor</th>
-					</tr>
-				</thead>";
-			
-			foreach ($respuesta as $fila ) {
-			 	
-			 
-
-				$html.= "<tr>";
-					$html.= "<td>".$fila["titulo"]."</td>";
-					$html.= "<td>".$fila["editorial"]."</td>";
-					$html.= "<td>".$fila["autor"]."</td>";
-				$html.= "</tr>";
+	public function eliminar(){
+		$placa= $_POST["name-input-placa"];
+		
+		$modelo=$this->cargarModelo("CarroModelo");
+		$respuesta=$modelo->eliminar($placa);
+		if($respuesta !=null ){
+				//return $respuesta;
+				print_r(json_encode(array('resultado'=>$respuesta)));
 			}
-		print_r(json_encode(array('tabla'=>$html)));
 		
 	}
 

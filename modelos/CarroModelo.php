@@ -21,7 +21,24 @@ class CarroModelo extends Modelo{
 		return $this->query($sql);
 	}*/
 	
+    function eliminar($placa){
+     try{
+     	$estado='A';
+        $query="DELETE FROM carros WHERE placa=?";
+        $stmt = $this->conexion->prepare($query);
 
+        $stmt->bindParam(1,$placa);
+
+           if($stmt->execute()){
+	            return "Borrado con exito";	          
+	        }else{
+	        	return "No borro!";	        	
+	        }
+
+     }catch(PDOException $exception){
+         return  "Error: " . $exception->getMessage();
+     }
+    }
 	function registrar($tipocarro,$marca,$capacidad,$precio,$color,$placa,$kilometraje,$disponibilidad){
 	    try{
 	  		$estado='A';
