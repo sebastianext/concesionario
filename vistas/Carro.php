@@ -1,4 +1,33 @@
 <script type="text/javascript">
+        var id=$('#idCarro').val();
+        console.log("id carro: "+id);
+            $.ajax({
+              url: '/concesionario/CarroController/obtenerCarro',
+              type: 'POST',
+              data: { 'name-idcarro': id
+              },
+              dataType: 'json',
+              success: function(respuestaPHP){
+                            console.log("dentro del success");
+                            if (respuestaPHP != null ) {
+                              console.log("dentro del if  success"+respuestaPHP);
+
+                              $('.select-tipo-carro').val(respuestaPHP.tipocarro);
+                              $('.select-marca').val(respuestaPHP.marca);
+                              $('.input-capacidad').val(respuestaPHP.capacidad);
+                              $('.input-precio').val(respuestaPHP.preciorenta);
+                              $('.input-color').val(respuestaPHP.color);
+                              $('.input-placa').val(respuestaPHP.placa);
+                              $('.input-kilometraje').val(respuestaPHP.kilometraje);
+                              $('.select-disponibilidad').val(respuestaPHP.disponibilidad);
+                              Materialize.toast(respuestaPHP.placa, 5000);
+                            }else{
+                              console.log("dentro del else success");    
+                            } 
+                        }
+             });
+
+
   function guardar(accion){
     //var id=$(".input-usuario-id").val();
     var tipocarro=$(".select-tipo-carro").val();

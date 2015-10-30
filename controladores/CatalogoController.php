@@ -1,7 +1,7 @@
 <?php 
 include "../concesionario/libs/Controlador.php";
 error_reporting(E_ALL);
-class CarroController extends Controlador {
+class CatalogoController extends Controlador {
 
 		
 	public function registrar(){
@@ -37,17 +37,34 @@ class CarroController extends Controlador {
 	}
 
 
-public function obtenerCarro(){
-		$carroid= $_POST["name-idcarro"];
+	
+	public function obtenerCarros(){
 		$modelo=$this->cargarModelo("CarroModelo");
-		$respuesta=$modelo->getCarro($carroid);
-
-		foreach ($respuesta as $fila ) {
-			 	//echo "entro al for";
-			print_r(json_encode($fila));
-			//return $fila;		
-		}
+		$respuesta=$modelo->getCarros();
 		
+		if($respuesta !=null ){
+			header('Content-Type: application/json');
+			//var_dump($respuesta);
+			$rows = array();
+			foreach ($respuesta as $fila ) {
+			 	//echo "entro al for";
+				$rows[] = array('data' => $fila);
+				// $rows[]['data'] 
+			//return $fila;		
+			}
+			print_r(json_encode($rows));
+		}	
+	}
+
+	public function obtenerLibrosSelect(){
+		$modelo=$this->cargarModelo("Libro");
+		$respuesta=$modelo->getLibrosSelect();
+		$html='<option value="" disabled selected>Seleccionar...</option>';
+		foreach ($respuesta as $fila ) {
+                $html.="<option value='".$fila["codigo"]."'>".$fila["titulo"]."</option>";
+
+        }
+        print_r($html);
 	}
 
 }

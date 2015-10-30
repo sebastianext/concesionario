@@ -91,6 +91,7 @@
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </nav>
+    <input type="hidden" id="idCarro" value="">
   <section class="hola">
     <div >
      <h1 class="titulo center-align">Concesionario</h1>

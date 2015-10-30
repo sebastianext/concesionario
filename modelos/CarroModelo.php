@@ -8,12 +8,12 @@ class CarroModelo extends Modelo{
 		
 	}
 
-	function getUsuarios(){
-		return $this->query("SELECT usuaid,usuanombre,usuaapellido,usuausua,usuaclave,usuacorreo,usuaestado,usuafeact,usuafecr,usuausact,usuauscr FROM usuarios");
+	function getCarros(){
+		return $this->query("SELECT tipocarro,marca, capacidad, preciorenta, color,  placa, kilometraje, disponibilidad FROM carros");
 	}
 
-	function getUsuario($usuaid){
-		return $this->query("SELECT usuaid,usuanombre,usuaapellido,usuausua,usuaclave,usuacorreo,usuaestado,usuafeact,usuafecr,usuausact,usuauscr FROM usuarios WHERE usuaid=".$usuaid);
+	function getCarro($carroid){
+		return $this->query("SELECT id,tipocarro,marca, capacidad, preciorenta, color,  placa, kilometraje, disponibilidad FROM carros WHERE id=".$carroid);
 	}
 
 	/*function getUsuarios(){

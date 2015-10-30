@@ -4,7 +4,7 @@ class Modelo{
 	private $host="localhost";
 	private $dbname="concesionario";
 	private $username="root";
-	private $password="1234";
+	private $password="";
 
 	/*
 	private $host="localhost";
