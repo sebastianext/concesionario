@@ -9,22 +9,26 @@ class CarroModelo extends Modelo{
 	}
 
 	function getCarros(){
-		return $this->query("SELECT tipocarro,marca, capacidad, preciorenta, color,  placa, kilometraje, disponibilidad FROM carros");
+		return $this->query("SELECT c.id id,t.nombre tipocarro,m.nombre marca, capacidad, preciorenta, color, placa, kilometraje, disponibilidad FROM carros c,marcas m,tiposcarros t where c.marca=m.id and c.tipocarro=t.id");
+	}
+
+	function getMarcas(){
+		return $this->query("SELECT id,nombre FROM marcas");
+	}
+
+	function getTipos(){
+		return $this->query("SELECT id,nombre FROM tiposcarros");
 	}
 
 	function getCarro($carroid){
 		return $this->query("SELECT id,tipocarro,marca, capacidad, preciorenta, color,  placa, kilometraje, disponibilidad FROM carros WHERE id=".$carroid);
 	}
 
-	/*function getUsuarios(){
-		$sql=$this->select(array("id", "correo", "nombre", "apellido"),array("nombre"=>"sebastian"));
-		return $this->query($sql);
-	}*/
 	
     function eliminar($placa){
      try{
-     	$estado='A';
-        $query="DELETE FROM carros WHERE placa=?";
+
+        $query="DELETE FROM carros WHERE id=?";
         $stmt = $this->conexion->prepare($query);
 
         $stmt->bindParam(1,$placa);
@@ -39,9 +43,38 @@ class CarroModelo extends Modelo{
          return  "Error: " . $exception->getMessage();
      }
     }
-	function registrar($tipocarro,$marca,$capacidad,$precio,$color,$placa,$kilometraje,$disponibilidad){
+	/*function registrar($tipocarro,$marca,$capacidad,$precio,$color,$placa,$kilometraje,$disponibilidad,$foto,$tipofoto){
 	    try{
 	  		$estado='A';
+	  		
+	        $query = "INSERT INTO carros SET tipocarro = ?,  marca = ?,foto = ?,tipofoto= ?, capacidad=? , preciorenta=? , color=? ,  placa=?, kilometraje=?, disponibilidad=?";
+	        $stmt = $this->conexion->prepare($query);  
+	       
+	         $stmt->bindParam(1, $tipocarro);
+	         $stmt->bindParam(2, $marca);
+	         $stmt->bindParam(3, $foto);
+	         $stmt->bindParam(4, $tipofoto);
+	         $stmt->bindParam(5, $capacidad);
+	         $stmt->bindParam(6, $precio);
+	         $stmt->bindParam(7, $color);
+	         $stmt->bindParam(8, $placa);
+	         $stmt->bindParam(9, $kilometraje);
+	         $stmt->bindParam(10,$disponibilidad);		
+	     
+	        if($stmt->execute()){
+	            return "Guardo con exito";	          
+	        }else{
+	        	return "No guardo!";	        	
+	        }
+	  
+	    }catch(PDOException $exception){ 
+	        return  "Error: " . $exception->getMessage();
+	    }
+	}*/
+
+	function registrar($tipocarro,$marca,$capacidad,$precio,$color,$placa,$kilometraje,$disponibilidad){
+	    try{
+	  		
 	  		
 	        $query = "INSERT INTO carros SET tipocarro = ?,  marca = ?, capacidad=? , preciorenta=? , color=? ,  placa=?, kilometraje=?, disponibilidad=?";
 	        $stmt = $this->conexion->prepare($query);  
@@ -53,7 +86,7 @@ class CarroModelo extends Modelo{
 	         $stmt->bindParam(5, $color);
 	         $stmt->bindParam(6, $placa);
 	         $stmt->bindParam(7, $kilometraje);
-	         $stmt->bindParam(8, $disponibilidad);		
+	         $stmt->bindParam(8,$disponibilidad);		
 	     
 	        if($stmt->execute()){
 	            return "Guardo con exito";	          
@@ -67,7 +100,7 @@ class CarroModelo extends Modelo{
 	}
 	function actualizarUsuario($id,$nombre,$apellido,$usuario,$correo,$clave){
 	    try{
-	  		$estado='A';
+	  		
 	  		$fecha=date("Y/m/d H:i:s");
 	  		$usuarioActu=$_SESSION['usuausua'];
 	        $query = "UPDATE  usuarios SET usuanombre = ?, usuaapellido = ?, usuausua = ?, usuacorreo=? , usuaclave=? , usuausact=? ,usuafeact=? WHERE usuaid=?";

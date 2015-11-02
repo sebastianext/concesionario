@@ -49,11 +49,19 @@
   <script>
 
 
+
     $(document).on('ready',function(){ 
+
+      $('.button-collapse').sideNav({
+            menuWidth: 240, // Default is 240
+            edge: 'left', // Choose the horizontal origin
+            closeOnClick: false // Closes side-nav on <a> clicks, useful for Angular/Meteor
+          }
+        );
+
       $(".menu1").on('click',function(){
       
           $('section.hola').load('../concesionario/vistas/Catalogo.php');
-          $('.side-nav').css({'width':'240px','left':'0'});
       
        //$('section.hola').load('../concesionario/vistas/Catalogo.php');
       });
@@ -67,12 +75,7 @@
       });
 
 
-       $('.button-collapse').sideNav({
-            menuWidth: 240, // Default is 240
-            edge: 'left', // Choose the horizontal origin
-            closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-          }
-        );
+       
 
 
     });
