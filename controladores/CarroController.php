@@ -85,6 +85,26 @@ class CarroController extends Controlador {
 					}				
 	}
 
+	public function actualizar(){
+		$id= $_POST["name-id"];
+		$tipocarro= $_POST["name-select-tipo-carro"];
+		$marca= $_POST["name-select-marca"];
+		$capacidad= $_POST["name-input-capacidad"];
+		$precio= $_POST["name-input-precio"];
+		$color= $_POST["name-input-color"];
+		$placa= $_POST["name-input-placa"];
+		$kilometraje= $_POST["name-input-kilometraje"];
+		$disponibilidad= $_POST["name-select-disponibilidad"];
+
+		 		$modelo=$this->cargarModelo("CarroModelo");
+				//var_dump($modelo);
+					$respuesta=$modelo->actualizar($id,$tipocarro,$marca,$capacidad,$precio,$color,$placa,$kilometraje,$disponibilidad/*,$foto,$tipofoto*/);
+					if($respuesta !=null ){
+						//return $respuesta;
+						print_r(json_encode(array('resultado'=>$respuesta)));
+					}				
+	}
+
 	public function eliminar(){
 		$placa= $_POST["name-input-placa"];
 		

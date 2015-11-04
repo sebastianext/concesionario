@@ -98,6 +98,33 @@ class CarroModelo extends Modelo{
 	        return  "Error: " . $exception->getMessage();
 	    }
 	}
+
+	function actualizar($id,$tipocarro,$marca,$capacidad,$precio,$color,$placa,$kilometraje,$disponibilidad/*,$foto,$tipofoto*/){
+	    try{
+	  		
+	        $query = "UPDATE  carros SET tipocarro = ?,  marca = ?, capacidad=? , preciorenta=? , color=? ,  placa=?, kilometraje=?, disponibilidad=? WHERE id=?";
+	        $stmt = $this->conexion->prepare($query);  
+	        
+	         $stmt->bindParam(1, $tipocarro);
+	         $stmt->bindParam(2, $marca);
+	         $stmt->bindParam(3, $capacidad);
+	         $stmt->bindParam(4, $precio);
+	         $stmt->bindParam(5, $color);
+	         $stmt->bindParam(6, $placa);
+	         $stmt->bindParam(7, $kilometraje);
+	         $stmt->bindParam(8, $disponibilidad);	
+	         $stmt->bindParam(9, $id);	
+	     
+	        if($stmt->execute()){
+	            return "Actualizo con exito";	          
+	        }else{
+	        	return "No Actualizo!";	        	
+	        }
+	  
+	    }catch(PDOException $exception){ 
+	        return  "Error: " . $exception->getMessage();
+	    }
+	}
 	function actualizarUsuario($id,$nombre,$apellido,$usuario,$correo,$clave){
 	    try{
 	  		

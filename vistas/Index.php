@@ -34,6 +34,7 @@
           header, main, footer,body {
             padding-left: 240px;
           }
+          
 
           @media only screen and (max-width : 992px) {
             header, main, footer,body {
@@ -60,15 +61,16 @@
         );
 
       $(".menu1").on('click',function(){
-      
           $('section.hola').load('../concesionario/vistas/Catalogo.php');
-      
-       //$('section.hola').load('../concesionario/vistas/Catalogo.php');
+      });
+
+      $(".menu2").on('click',function(){
+          $('section.hola').load('../concesionario/vistas/SolicitudRenta.php');
       });
 
 
        $("a.carro").on('click',function(){
-      console.log("sdnsdn");
+          console.log("sdnsdn");
           $('section.hola').load('../concesionario/vistas/Carro.php');
       
        //$('section.hola').load('../concesionario/vistas/Catalogo.php');
@@ -86,7 +88,7 @@
     <nav class="blue">
       <ul id="slide-out" class="side-nav fixed">
         <li><a class="menu1" onclick="return false;">Catalogo de Carros</a></li>
-        <li><a href="#!">Solicitud de Rentas</a></li>
+        <li><a class="menu2" onclick="return false;">Solicitud de Rentas</a></li>
         <li><a href="#!">Devoluciones</a></li>
         <li><a href="#!">Retribucion de Bonos</a></li>
         <li><a href="#!">Facturacion</a></li>

@@ -75,7 +75,7 @@
                    
 
   function guardar(accion){
-    //var id=$(".input-usuario-id").val();
+    var id=$("#id").val(); 
     var tipocarro=$(".select-tipo-carro").val();
     var marca=$(".select-marca").val();
     var capacidad=$(".input-capacidad").val();
@@ -105,7 +105,8 @@
               'name-input-color': color,
               'name-input-placa': placa,
               'name-input-kilometraje': kilometraje, 
-              'name-select-disponibilidad': disponibilidad
+              'name-select-disponibilidad': disponibilidad,
+              'name-id':id
               },
 
               dataType: 'json',
@@ -114,6 +115,7 @@
                             if (respuestaPHP['resultado'] != null ) {
                               console.log("dentro del if  success"+respuestaPHP[1]);
                               Materialize.toast(respuestaPHP['resultado'], 5000);
+                              $('section.hola').load('../concesionario/vistas/Catalogo.php');
                             }else{
                               console.log("dentro del else success");    
                             } 
@@ -248,7 +250,7 @@
  
             <div class="row">
                <a class="waves-effect blue btn btncrear" onclick="guardar('registrar')">Crear</a>
-               <a class="waves-effect blue btn btnactualizar">Actualizar</a>
+               <a class="waves-effect blue btn btnactualizar" onclick="guardar('actualizar')">Actualizar</a>
                <a class="waves-effect blue btn btneliminar" onclick="eliminar('eliminar')">Eliminar</a>
             </div>
       </div>
