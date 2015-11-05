@@ -33,6 +33,7 @@
 
           header, main, footer,body {
             padding-left: 240px;
+           padding: 240px;
           }
           
 
