@@ -1,4 +1,27 @@
 <?php
+include "../concesionario/libs/Controlador.php";
 
+
+error_reporting(-1)
+class FacturaController extends Controlador
+{
+	
+	public function facturar(){
+		
+	    
+		$cedula= $_POST["name-input-cedula"];
+		$placa= $_POST["name-input-placa"];
+		$horas= $_POST["name-input-horas"];
+		
+
+		 		$modelo=$this->cargarModelo("FacturaModelo");
+				//var_dump($modelo);
+					$respuesta=$modelo->facturar($cedula,$placa,$horas);
+					if($respuesta !=null ){
+						//return $respuesta;
+						print_r(json_encode(array('resultado'=>$respuesta)));
+					}				
+	}
+}
 
 ?>

@@ -69,6 +69,10 @@
           $('section.hola').load('../concesionario/vistas/SolicitudRenta.php');
       });
 
+       $(".menu3").on('click',function(){
+          $('section.hola').load('../concesionario/vistas/Facturacion.php');
+      });
+
 
        $("a.carro").on('click',function(){
           console.log("sdnsdn");
@@ -89,10 +93,10 @@
     <nav class="blue">
       <ul id="slide-out" class="side-nav fixed">
         <li><a class="menu1" onclick="return false;">Catalogo de Carros</a></li>
-        <li><a class="menu2" onclick="return false;">Solicitud de Rentas</a></li>
+        <li><a class="menu2" onclick="return false;">Solicitud de Rentas</a></li>        
         <li><a href="#!">Devoluciones</a></li>
         <li><a href="#!">Retribucion de Bonos</a></li>
-        <li><a href="#!">Facturacion</a></li>
+        <li><a class="menu3" onclick="return false;">Facturacion</a></li>
         <li><a href="#!">Reportes</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
