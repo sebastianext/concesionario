@@ -9,7 +9,7 @@ class FacturaController extends Controlador
 	public function facturar(){
 		
 	    
-		$cedula= $_POST["name-input-cedula"];
+		$cedula=$_POST["name-input-cedula"];
 		$placa= $_POST["name-input-placa"];
 		$horas= $_POST["name-input-horas"];
 		

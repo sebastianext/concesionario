@@ -13,7 +13,7 @@ function facturar($cedula,$placa,$horas){
 try{
 	  		
 	  		
-	        $query = "INSERT INTO factura SET cedula= ? placa= ?,  , horas=?";
+	        $query = "INSERT INTO factura SET cedula=?, placa=?,  horas=?";
 	        $stmt = $this->conexion->prepare($query);  
 	       
 	         $stmt->bindParam(1, $cedula);
