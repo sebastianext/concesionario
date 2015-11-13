@@ -104,7 +104,7 @@
             <div class="row">
               <div class="col s12 m6">
                 <label>Fecha</label>
-                <input type="datetime-local" class="datepickerr" value="2013-01-01T12:00">
+                <input type="datetime-local" class="datepickerr" value="2015-01-01T12:00">
               </div>
             </div>
             

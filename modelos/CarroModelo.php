@@ -9,7 +9,8 @@ class CarroModelo extends Modelo{
 	}
 
 	function getCarros(){
-		return $this->query("SELECT c.id id,t.nombre tipocarro,m.nombre marca, capacidad, preciorenta, color, placa, kilometraje, disponibilidad FROM carros c,marcas m,tiposcarros t where c.marca=m.id and c.tipocarro=t.id");
+		return $this->query("SELECT c.id id,t.nombre tipocarro,m.nombre marca, capacidad, preciorenta, color, placa, kilometraje, disponibilidad 
+			FROM carros c,marcas m,tiposcarros t where c.marca=m.id and c.tipocarro=t.id");
 	}
 
 	function getMarcas(){
