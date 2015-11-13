@@ -1,5 +1,41 @@
+
+
 <script type="text/javascript">
     
+
+    $(document).ready(function(){
+        
+        $('#reporteRentas').DataTable(
+          {
+            "language": {
+                "sProcessing":    "Procesando...",
+                "sLengthMenu":    "Mostrar _MENU_ registros",
+                "sZeroRecords":   "No se encontraron resultados",
+                "sEmptyTable":    "Ningún dato disponible en esta tabla",
+                "sInfo":          "Registro del _START_ al _END_ de _TOTAL_",
+                "sInfoEmpty":     "No hay registros",
+                "sInfoFiltered":  "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix":   "",
+                "sSearch":        "Buscar:",
+                "sUrl":           "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":    "Último",
+                    "sNext":    "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        }
+        );
+    });
+
+
      $('.datepicker').pickadate({
         selectHour: true,
         selectMonths: true, // Creates a dropdown to control month
@@ -21,7 +57,7 @@
                             }
                              
                           }
-                      });                   
+                      });        
 
   function guardar(accion){
     var id=$("#id").val(); 
@@ -45,7 +81,8 @@
                             if (respuestaPHP['resultado'] != null ) {
                               console.log("dentro del if  success"+respuestaPHP[1]);
                               Materialize.toast(respuestaPHP['resultado'], 5000);
-                              $('section.hola').load('../concesionario/vistas/Catalogo.php');
+                              $("#reporteRentas").html(respuestaPHP['tabla']);
+                              //$('section.hola').load('../concesionario/vistas/Catalogo.php');
                             }else{
                               console.log("dentro del else success");    
                             } 
@@ -93,4 +130,20 @@
                <a class="waves-effect blue btn btneliminar" onclick="eliminar('eliminar')">Eliminar</a>
             </div>
       </div>
+
+
+     <div class="row">
+       <div class="col s12 white border">
+        <table id="reporteRentas">
+          <thead>
+          <tr>
+            <th>Editar</th>
+            <th>Fecha</th>
+            <th>kilometraje</th>
+            <th>Cliente</th>
+          </tr>
+        </thead>
+        </table>
+        </div> 
+     </div>  
 </div>

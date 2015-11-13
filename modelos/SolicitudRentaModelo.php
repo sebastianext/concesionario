@@ -13,6 +13,14 @@ class SolicitudRentaModelo extends Modelo{
 		return $this->query("SELECT id,cedula,nombre FROM clientes");
 	}
 
+	function getRentas(){
+		return $this->query("SELECT id,fecha,kilometraje,cliente FROM renta");
+	}
+
+	function getRenta($id){
+		return $this->query("SELECT id,fecha,kilometraje,cliente FROM renta WHERE id=".$id);
+	}
+
 	
 
 	function registrar($fecha,$kilometraje,$cliente,$id){

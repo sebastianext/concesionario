@@ -16,7 +16,7 @@ class SolicitudRentaController extends Controlador {
 					$respuesta=$modelo->registrar($fecha,$kilometraje,$cliente,$id);
 					if($respuesta !=null ){
 						//return $respuesta;
-						print_r(json_encode(array('resultado'=>$respuesta)));
+						print_r(json_encode(array('resultado'=>$respuesta,'tabla'=>$this->obtenerRentas())));
 					}				
 	}
 
@@ -33,6 +33,48 @@ class SolicitudRentaController extends Controlador {
      
 	}
 
+
+	public function obtenerRentas(){
+		$modelo2=$this->cargarModelo("SolicitudRentaModelo");
+		$respuesta=$modelo2->getRentas();
+		$html= "<thead>
+					<tr>
+						<th>Editar</th>
+						<th>Fecha</th>
+						<th>kilometraje</th>
+						<th>Cliente</th>
+					</tr>
+				</thead>";
+
+			foreach ($respuesta as $fila ) {
+			 	//echo "entro al for";
+			 	$id=trim($fila["id"]);
+
+				$html.= "<tr>";
+					$html.= "<td><i class='edit-renta' onclick='edit(&#34;".$id."&#34;);'></i></td>";
+					$html.= "<td>".$fila["fecha"]."</td>";
+					$html.= "<td>".$fila["kilometraje"]."</td>";
+					$html.= "<td>".$fila["cliente"]."</td>";
+				$html.= "</tr>";
+			}
+
+			return $html;
+	}
+
+	public function obtenerRenta(){
+		$id= $_POST["id"];
+		//echo $usuaid;
+		$modelo=$this->cargarModelo("SolicitudRentaModelo");
+		$respuesta=$modelo->getRenta($id);
+		//var_dump($respuesta);
+		//print_r($respuesta);
+		foreach ($respuesta as $fila ) {
+			 	//echo "entro al for";
+			print_r(json_encode($fila));
+			//return $fila;		
+		}
+		
+	}
 
 
 

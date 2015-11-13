@@ -24,6 +24,10 @@
     <!-- script js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/materialize.min.js"></script> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.css"/>
+ 
+    <script type="text/javascript" src="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.js"></script>
+
       <!-- html5 boilerplate -->
           <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 
@@ -33,7 +37,7 @@
 
           header, main, footer,body {
             padding-left: 240px;
-           padding: 240px;
+           
           }
           
 
