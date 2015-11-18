@@ -20,6 +20,32 @@ class SolicitudRentaController extends Controlador {
 					}				
 	}
 
+	public function actualizar(){
+		$fecha= $_POST["name-datepicker"];
+		$kilometraje= $_POST["name-input-kilometraje"];
+		$cliente= $_POST["name-select-clientes"];
+		$id= $_POST["name-id"];
+
+		$modelo=$this->cargarModelo("SolicitudRentaModelo");
+				//var_dump($modelo);
+					$respuesta=$modelo->actualizar($fecha,$kilometraje,$cliente,$id);
+					if($respuesta !=null ){
+						//return $respuesta;
+						print_r(json_encode(array('resultado'=>$respuesta,'tabla'=>$this->obtenerRentas())));
+					}				
+	}
+
+	public function eliminar(){
+		$id= $_POST["name-id"];
+		
+		$modelo=$this->cargarModelo("SolicitudRentaModelo");
+		$respuesta=$modelo->eliminar($id);
+		if($respuesta !=null ){
+				//return $respuesta;
+				print_r(json_encode(array('resultado'=>$respuesta,'tabla'=>$this->obtenerRentas())));
+			}
+		
+	}
 
 	public function obtenerSelectClientes(){
 		$modelo=$this->cargarModelo("SolicitudRentaModelo");
@@ -51,7 +77,7 @@ class SolicitudRentaController extends Controlador {
 			 	$id=trim($fila["id"]);
 
 				$html.= "<tr>";
-					$html.= "<td><i class='edit-renta' onclick='edit(&#34;".$id."&#34;);'></i></td>";
+					$html.= "<td><i onclick='edit(&#34;".$id."&#34;);' class='material-icons'>mode_edit</i></td>";
 					$html.= "<td>".$fila["fecha"]."</td>";
 					$html.= "<td>".$fila["kilometraje"]."</td>";
 					$html.= "<td>".$fila["cliente"]."</td>";

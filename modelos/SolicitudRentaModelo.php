@@ -44,5 +44,45 @@ class SolicitudRentaModelo extends Modelo{
 	        return  "Error: " . $exception->getMessage();
 	    }
 	}
+
+	function actualizar($fecha,$kilometraje,$cliente,$id){
+	    try{
+	  		
+	        $query = "UPDATE  renta SET fecha = ?, kilometraje=?, cliente=? WHERE id=?";
+	        $stmt = $this->conexion->prepare($query);  
+	        
+	         $stmt->bindParam(1, $fecha);
+	         $stmt->bindParam(2, $kilometraje);
+	         $stmt->bindParam(3, $cliente);	
+	         $stmt->bindParam(4, $id);	
+	     
+	        if($stmt->execute()){
+	            return "Actualizo con exito";	          
+	        }else{
+	        	return "No Actualizo!";	        	
+	        }
+	  
+	    }catch(PDOException $exception){ 
+	        return  "Error: " . $exception->getMessage();
+	    }
+	}
+	function eliminar($id){
+     try{
+
+        $query="DELETE FROM renta WHERE id=?";
+        $stmt = $this->conexion->prepare($query);
+
+        $stmt->bindParam(1,$id);
+
+           if($stmt->execute()){
+	            return "Borrado con exito";	          
+	        }else{
+	        	return "No borro!";	        	
+	        }
+
+     }catch(PDOException $exception){
+         return  "Error: " . $exception->getMessage();
+     }
+    }
 }
 ?>
