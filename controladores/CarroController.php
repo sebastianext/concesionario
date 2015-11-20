@@ -162,6 +162,20 @@ public function obtenerCarro(){
 	}
 
 }
+public function obtenerImagen(){
+		$carroid= $_POST["name-idcarro"];
+		$modelo=$this->cargarModelo("CarroModelo");
+		$respuesta=$modelo->obtenerImagen($carroid);
+
+		foreach ($respuesta as $fila ) {
+			 	//echo "entro al for";
+			print_r(json_encode($fila));
+			//return $fila;		
+		}
+		
+	}
+
+}
 
 
 ?>

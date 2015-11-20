@@ -55,6 +55,7 @@ class CatalogoController extends Controlador {
 			print_r(json_encode($rows));
 		}	
 	}
+	
 
 	public function obtenerLibrosSelect(){
 		$modelo=$this->cargarModelo("Libro");

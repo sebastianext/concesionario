@@ -44,6 +44,7 @@ class SolicitudRentaModelo extends Modelo{
 	        return  "Error: " . $exception->getMessage();
 	    }
 	}
+	
 
 	function actualizar($fecha,$kilometraje,$cliente,$id){
 	    try{

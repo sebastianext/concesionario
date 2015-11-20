@@ -126,6 +126,13 @@ class CarroModelo extends Modelo{
 	        return  "Error: " . $exception->getMessage();
 	    }
 	}
+	function obtenerImagen($placa){
+		 $query = "SELECT foto FROM carros WHERE placa=? ";
+		  $stmt = $this->conexion->prepare($query);
+		  $stmt->bindParam(1, $placa);
+          return $query;
+
+	}
 	function actualizarUsuario($id,$nombre,$apellido,$usuario,$correo,$clave){
 	    try{
 	  		

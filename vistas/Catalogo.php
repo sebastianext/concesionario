@@ -42,6 +42,7 @@
                                   var color=respuestaPHP[i].data.color;
                                   var kilometraje=respuestaPHP[i].data.kilometraje;
                                   var disponibilidad=respuestaPHP[i].data.disponibilidad;
+                                  
 
                                   var  disponibilidad2='';
                                   /*
